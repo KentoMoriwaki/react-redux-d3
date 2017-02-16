@@ -1,28 +1,17 @@
 import delay from 'delay';
-import * as actionTypes from '../utils/actionTypes';
+import * as ActionTypes from '../utils/ActionTypes';
 import apiFetch from '../utils/apiFetch';
 
-export const increaseCount = () => ({
-  type: actionTypes.COUNT_INCREASED,
-});
+export function changeFilterProjectId(projectId) {
+  return {
+    type: ActionTypes.FILTER_PROJECT_CHANGED,
+    projectId: projectId,
+  };
+}
 
-export const loadCount = () => async dispatch => {
-  const res = await apiFetch('/count');
-  const json = await res.json();
-  dispatch({
-    type: actionTypes.COUNT_UPDATED,
-    count: json.count,
-  });
-};
-
-export const saveCount = () => async (dispatch, getStore) => {
-  const res = await apiFetch('/count', {
-    method: 'PUT',
-    body: JSON.stringify({ count: getStore().counter.count }),
-  });
-  const json = await res.json();
-  dispatch({
-    type: actionTypes.COUNT_UPDATED,
-    count: json.count,
-  });
-};
+export function changeFilterRange(range) {
+  return {
+    type: ActionTypes.FILTER_RANGE_CHANGED,
+    range: range,
+  };
+}

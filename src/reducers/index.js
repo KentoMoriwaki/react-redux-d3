@@ -1,8 +1,8 @@
 import { combineReducers } from 'redux';
-import counter from './counter';
+import analytics from './analytics';
 
 const reducer = combineReducers({
-  counter,
+  analytics,
 });
 
 export default reducer;
