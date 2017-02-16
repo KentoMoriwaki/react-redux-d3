@@ -5,6 +5,8 @@ import { bindActionCreators } from 'redux';
 import * as actions from '../actions';
 import Filter from '../components/Filter';
 import LineChart from '../components/d3/LineChart';
+import Line from '../components/d3/Line';
+import Area from '../components/d3/Area';
 
 class AnalyticsContainer extends Component {
 
@@ -50,7 +52,14 @@ class AnalyticsContainer extends Component {
             data={analytics.data}
             width={500}
             height={400}
-          />
+          >
+            <Line
+              data={analytics.data}
+            />
+            <Area
+              data={analytics.data}
+            />
+          </LineChart>
         ) }
       </div>
     )
@@ -68,3 +77,13 @@ function mapDispatch(dispatch) {
 }
 
 export default connect(mapState, mapDispatch)(AnalyticsContainer);
+
+<LineChart
+  data={analytics.data}
+  width={500}
+  height={400}
+>
+  <Line />
+  <Area />
+  {/* Add another component */}
+</LineChart>

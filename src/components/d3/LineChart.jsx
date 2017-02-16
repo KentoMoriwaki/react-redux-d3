@@ -1,6 +1,5 @@
 import React, { Component, PropTypes } from 'react';
 import * as d3 from 'd3';
-import Line from './Line';
 
 export default class LineChart extends Component {
 
@@ -15,9 +14,12 @@ export default class LineChart extends Component {
 
   getChildContext() {
     const { xScale, yScale } = this.state;
+    const { width, height } = this.props;
     return {
       xScale,
       yScale,
+      width,
+      height,
     };
   }
 
@@ -61,14 +63,9 @@ export default class LineChart extends Component {
           style={{ height }}
         >
           <g>
-            <Line
-              data={data}
-              width={width}
-              height={height}
-            />
+            { children }
           </g>
         </svg>
-        { children }
       </div>
     );
   }
@@ -81,12 +78,9 @@ LineChart.propTypes = {
   height: PropTypes.number.isRequired,
 };
 
-LineChart.defaultProps = {
-  width: 400,
-  height: 375,
-};
-
 LineChart.childContextTypes = {
   xScale: PropTypes.func.isRequired,
   yScale: PropTypes.func.isRequired,
+  width: PropTypes.number.isRequired,
+  height: PropTypes.number.isRequired,
 };
