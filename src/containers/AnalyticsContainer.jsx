@@ -4,12 +4,13 @@ import { bindActionCreators } from 'redux';
 
 import * as actions from '../actions';
 import Filter from '../components/Filter';
+import LineChart from '../components/LineChart';
 
 class AnalyticsContainer extends Component {
 
   componentDidMount() {
-    const { actions } = this.props;
-    // actions.loadCount();
+    const { analytics, actions } = this.props;
+    actions.loadData({ range: analytics.range, projectId: analytics.projectId });
   }
 
   onChangeProjectId = (e) => {
@@ -32,6 +33,15 @@ class AnalyticsContainer extends Component {
           onChangeProjectId={this.onChangeProjectId}
           onChangeRange={this.onChangeRange}
         />
+        { analytics.isLoading ? (
+          <p>loading...</p>
+        ) : (
+          <LineChart
+            data={analytics.data}
+            width={500}
+            height={400}
+          />
+        ) }
       </div>
     )
   }

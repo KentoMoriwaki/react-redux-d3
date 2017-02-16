@@ -15,3 +15,17 @@ export function changeFilterRange(range) {
     range: range,
   };
 }
+
+export function loadData({ range, projectId }) {
+  return async dispatch => {
+    dispatch({
+      type: ActionTypes.DATA_LOADING,
+    });
+    const res = await fetch(`//localhost:3001/data/${range}-${projectId}.json`);
+    const json = await res.json();
+    dispatch({
+      type: ActionTypes.DATA_LOADED,
+      data: json,
+    });
+  };
+}

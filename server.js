@@ -6,7 +6,11 @@ var config = require('./webpack.config');
 
 var app = express();
 app.get('/data/:data.json', function(req, res) {
-  res.sendFile(`${__dirname}/public/data/${req.params.data}.json`);
+  res.header("Access-Control-Allow-Origin", "*");
+  res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+  setTimeout(function() {
+    res.sendFile(`${__dirname}/public/data/${req.params.data}.json`);
+  }, 1000);
 });
 
 new WebpackDevServer(webpack(config), {
