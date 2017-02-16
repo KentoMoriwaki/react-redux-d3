@@ -8,7 +8,7 @@ import analyticsMiddleware from '../middlewares';
 const enhancer = compose(
   applyMiddleware(
     thunk,
-    analyticsMiddleware,
+    // analyticsMiddleware,
     routerMiddleware(browserHistory)
   ),
   window.devToolsExtension ? window.devToolsExtension() : f => f,
