@@ -4,7 +4,7 @@ import { bindActionCreators } from 'redux';
 
 import * as actions from '../actions';
 import Filter from '../components/Filter';
-import LineChart from '../components/LineChart';
+import LineChart from '../components/d3/LineChart';
 
 class AnalyticsContainer extends Component {
 

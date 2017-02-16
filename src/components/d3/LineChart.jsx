@@ -1,5 +1,6 @@
 import React, { Component, PropTypes } from 'react';
 import * as d3 from 'd3';
+import Line from './Line';
 
 export default class LineChart extends Component {
 
@@ -60,15 +61,14 @@ export default class LineChart extends Component {
           style={{ height }}
         >
           <g>
-            {/* <Line
+            <Line
               data={data}
               width={width}
               height={height}
-            /> */}
+            />
           </g>
         </svg>
         { children }
-        <p>{ JSON.stringify(data) }</p>
       </div>
     );
   }
