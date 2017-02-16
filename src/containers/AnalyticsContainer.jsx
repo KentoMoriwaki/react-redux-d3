@@ -9,6 +9,16 @@ import LineChart from '../components/LineChart';
 class AnalyticsContainer extends Component {
 
   componentDidMount() {
+    this.onUpdate();
+  }
+
+  componentDidUpdate(prevProps) {
+    if (this.props.analytics.projectId !== prevProps.analytics.projectId || this.props.analytics.range !== prevProps.analytics.range) {
+      this.onUpdate();
+    }
+  }
+
+  onUpdate() {
     const { analytics, actions } = this.props;
     actions.loadData({ range: analytics.range, projectId: analytics.projectId });
   }
