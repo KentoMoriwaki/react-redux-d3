@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+
+set -eux
+
+PORT=3000 yarn start
