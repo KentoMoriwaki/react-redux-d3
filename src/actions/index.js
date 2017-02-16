@@ -31,3 +31,9 @@ export function loadData({ range, projectId }) {
     });
   };
 }
+
+export function updateData() {
+  return {
+    type: 'UPDATE_DATA',
+  };
+}

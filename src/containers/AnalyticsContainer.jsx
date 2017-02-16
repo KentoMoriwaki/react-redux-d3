@@ -23,7 +23,8 @@ class AnalyticsContainer extends Component {
 
   onUpdate() {
     const { analytics, actions } = this.props;
-    actions.loadData({ range: analytics.range, projectId: analytics.projectId });
+    // actions.loadData({ range: analytics.range, projectId: analytics.projectId });
+    actions.updateData();
   }
 
   onChangeProjectId = (e) => {
